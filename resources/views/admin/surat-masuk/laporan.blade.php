@@ -51,6 +51,17 @@
     </style>
 </head>
 <div class="container">
+    <div class="rangkasurat">
+        <table width="100%">
+            <tr>
+                <td><img src="{{ asset('assets/img/kalsel-logo.png') }}" width="50px"></td>
+                <td class="tengah">
+                    <h2>DINAS PEMBERDAYAAN PEREMPUAN PERLINDUNGAN ANAK DAN KELUARGA BERENCANA</h2>
+                    <b>Jalan Dharma Praja Kawasan Perkantoran Pemerintah Provinsi Kalimantan Selatan</b>
+                </td>
+            </tr>
+        </table>
+    </div>
     <h2 class="text-center">Laporan Surat Masuk</h2>
     <table class="table table-bordered">
         <thead>
@@ -76,6 +87,34 @@
             @endforeach
         </tbody>
     </table>
+    <!-- Signature and print script -->
+    <div class="signature-container">
+        <div style="width: 30%; float: right; text-align: right;">
+            <div class="text-left" style="text-align: center;">
+                <script>
+                    var today = new Date();
+                    var monthNames = [
+                        "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+                        "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+                    ];
+                    var formattedDate =
+                        "Banjarbaru, " +
+                        today.getDate() + " " +
+                        monthNames[today.getMonth()] + " " +
+                        today.getFullYear();
+                    document.write(formattedDate);
+                </script>
+                <br>Menyetujui
+                <br>Pengelola Biaya Proses
+            </div>
+            <div style="height: 100px;"></div>
+            <div class="text-left" style="text-align: center;">
+                (.................................................................................)
+                <br>Hj. Murnianti, S.H.
+            </div>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
 </div>
 
 {{-- Script untuk langsung mencetak laporan --}}

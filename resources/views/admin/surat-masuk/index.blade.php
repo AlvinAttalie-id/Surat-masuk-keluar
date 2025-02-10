@@ -36,7 +36,7 @@
                                 class="lg:w-[4%] w-[10%] inline-block py-1 my-2 font-bold text-center uppercase align-middle transition-all bg-transparent border rounded-lg cursor-pointer border-indigo-800 hover:bg-indigo-800 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-indigo-800 hover:text-white">
                                 <ion-icon name="add" class="w-6 h-6"></ion-icon>
                             </a>
-                            <a href="{{ route('surat-masuk.laporan') }}" type="button"
+                            <a href="{{ route('surat-masuk.laporan') }}" target="_blank" type="button"
                                 class="lg:w-[4%] w-[10%] inline-block py-1 my-2 font-bold text-center uppercase align-middle transition-all bg-transparent border rounded-lg cursor-pointer border-indigo-800 hover:bg-indigo-800 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-indigo-800 hover:text-white">
                                 <ion-icon name="print" class="w-6 h-6"></ion-icon>
                             </a>
