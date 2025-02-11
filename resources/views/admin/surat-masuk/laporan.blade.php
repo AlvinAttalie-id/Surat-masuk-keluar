@@ -56,8 +56,9 @@
             <tr>
                 <td><img src="{{ asset('assets/img/kalsel-logo.png') }}" width="50px"></td>
                 <td class="tengah">
-                    <h2>DINAS PEMBERDAYAAN PEREMPUAN PERLINDUNGAN ANAK DAN KELUARGA BERENCANA</h2>
-                    <b>Jalan Dharma Praja Kawasan Perkantoran Pemerintah Provinsi Kalimantan Selatan</b>
+                    <h2>KANTOR BALAI INSEMINASI BUATAN PROVINSI KALIMANTAN SELATAN</h2>
+                    <b>Balai Inseminasi Buatan (BIB) Provinsi Kalimantan Selatan yang beralamat Jl. A. Yani Km.33 No.32,
+                        Loktabat Selatan, Kota Banjarbaru, Kalimantan Selatan 70712</b>
                 </td>
             </tr>
         </table>
@@ -105,12 +106,12 @@
                     document.write(formattedDate);
                 </script>
                 <br>Menyetujui
-                <br>Pengelola Biaya Proses
+                <br>Kasubag Tata Usaha
             </div>
             <div style="height: 100px;"></div>
             <div class="text-left" style="text-align: center;">
                 (.................................................................................)
-                <br>Hj. Murnianti, S.H.
+                <br>Henny El Fitri, SE, M.SM.
             </div>
         </div>
         <div style="clear: both;"></div>

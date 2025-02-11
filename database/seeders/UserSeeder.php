@@ -2,17 +2,13 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
 use App\Models\User;
 
 class UserSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
         $users = [
             [
@@ -20,7 +16,7 @@ class UserSeeder extends Seeder
                 'email'     => 'admin@gmail.com',
                 'password'  => bcrypt('admin1234'),
                 'position'  => 'administrasi',
-                'phone'     => '0856651234276',
+                'phone'     => '0856651234273',
                 'role_id'   => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -30,33 +26,48 @@ class UserSeeder extends Seeder
                 'email'     => 'eddy@gmail.com',
                 'password'  => bcrypt('eddy123'),
                 'position'  => 'pimpinan',
-                'phone'     => '087766591519',
+                'phone'     => '087766591513',
                 'role_id'   => 2,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name'      => 'Tito Dermawan',
-                'email'     => 'tito@gmail.com',
-                'password'  => bcrypt('tito123'),
+                'name'      => 'Rizqi Ramdahani',
+                'email'     => 'rizqi@gmail.com',
+                'password'  => bcrypt('rizqi123'),
                 'position'  => 'Staff IT',
-                'phone'     => '089655591512',
+                'phone'     => '089655591513',
                 'role_id'   => 3,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name'      => 'Aisyah',
-                'email'     => 'aisyah@gmail.com',
-                'password'  => bcrypt('aisyah123'),
+                'name'      => 'Reza',
+                'email'     => 'Reza@gmail.com',
+                'password'  => bcrypt('Reza123'),
                 'position'  => 'Marketing',
-                'phone'     => '085655591712',
+                'phone'     => '085655591713',
                 'role_id'   => 3,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]
         ];
 
+        // 50 additional users with role_id 3
+        for ($i = 1; $i <= 50; $i++) {
+            $users[] = [
+                'name'      => 'User ' . $i,
+                'email'     => 'user' . $i . '@gmail.com',
+                'password'  => bcrypt('user' . $i . '123'),
+                'position'  => 'Staff',
+                'phone'     => '0856000000' . $i,
+                'role_id'   => 3,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ];
+        }
+
+        // Insert all users into the database
         User::insert($users);
     }
 }

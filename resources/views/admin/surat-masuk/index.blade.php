@@ -32,16 +32,36 @@
                     <div class="flex flex-col pb-4 mb-0 bg-white rounded-t-2xl">
                         <p class="text-lg font-bold text-black">Surat Masuk</p>
                         <div class="flex pb-4 mb-0 bg-white rounded-t-2xl">
+                            <!-- Tombol Tambah Surat -->
                             <a href="{{ route('surat-masuk.create') }}" type="button"
                                 class="lg:w-[4%] w-[10%] inline-block py-1 my-2 font-bold text-center uppercase align-middle transition-all bg-transparent border rounded-lg cursor-pointer border-indigo-800 hover:bg-indigo-800 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-indigo-800 hover:text-white">
                                 <ion-icon name="add" class="w-6 h-6"></ion-icon>
                             </a>
-                            <a href="{{ route('surat-masuk.laporan') }}" target="_blank" type="button"
-                                class="lg:w-[4%] w-[10%] inline-block py-1 my-2 font-bold text-center uppercase align-middle transition-all bg-transparent border rounded-lg cursor-pointer border-indigo-800 hover:bg-indigo-800 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-indigo-800 hover:text-white">
-                                <ion-icon name="print" class="w-6 h-6"></ion-icon>
-                            </a>
                         </div>
+
+                        <!-- Form Filter Tanggal -->
+                        <form method="GET" action="{{ route('surat-masuk.laporan') }}" id="filterForm"
+                            class="flex items-end gap-4">
+                            <div class="flex flex-col w-full">
+                                <label for="start_date" class="text-sm font-medium text-gray-900">Dari Tanggal:</label>
+                                <input type="date" id="start_date" name="start_date" value="{{ request('start_date') }}"
+                                    class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-600 focus:outline-none">
+                            </div>
+
+                            <div class="flex flex-col w-full">
+                                <label for="end_date" class="text-sm font-medium text-gray-900">Sampai Tanggal:</label>
+                                <input type="date" id="end_date" name="end_date" value="{{ request('end_date') }}"
+                                    class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-600 focus:outline-none">
+                            </div>
+
+                            <!-- Tombol Filter -->
+                            <button type="submit"
+                                class="px-4 py-2 font-bold text-white bg-indigo-800 rounded-lg shadow-md hover:bg-indigo-900 focus:outline-none">
+                                <ion-icon name="search" class="w-6 h-6"></ion-icon>
+                            </button>
+                        </form>
                     </div>
+
 
                     <div class="flex-auto pb-2">
                         <div class="overflow-x-auto">
@@ -193,5 +213,31 @@
                     }
                 })
         })
+        document.addEventListener("DOMContentLoaded", function() {
+            // Ambil elemen tombol cetak
+            const printBtn = document.getElementById("printReportBtn");
+
+            // Ambil elemen input tanggal
+            const startDateInput = document.getElementById("start_date");
+            const endDateInput = document.getElementById("end_date");
+
+            // Fungsi untuk memperbarui URL cetak laporan sesuai filter
+            function updatePrintLink() {
+                let baseUrl = "{{ route('surat-masuk.laporan') }}";
+                let startDate = startDateInput.value;
+                let endDate = endDateInput.value;
+
+                // Jika ada filter tanggal, tambahkan ke URL
+                if (startDate && endDate) {
+                    printBtn.href = `${baseUrl}?start_date=${startDate}&end_date=${endDate}`;
+                } else {
+                    printBtn.href = baseUrl;
+                }
+            }
+
+            // Event listener untuk input tanggal
+            startDateInput.addEventListener("change", updatePrintLink);
+            endDateInput.addEventListener("change", updatePrintLink);
+        });
     </script>
 @endsection

@@ -8,6 +8,7 @@ use App\Http\Requests\SuratMasuk\{
     StoreSuratMasukRequest,
     UpdateSuratMasukRequest
 };
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{
     DB,
     File,
@@ -27,15 +28,22 @@ class SuratMasukAdminController extends Controller
         ]);
     }
 
-    public function laporan()
+    public function laporan(Request $request)
     {
-        $suratmasuks = DB::table('incoming_letters')
+        $query = DB::table('incoming_letters')
             ->join('senders', 'senders.id', '=', 'incoming_letters.sender_id')
-            ->select('incoming_letters.*', 'senders.name as pengirim')
-            ->get(); // Menggunakan get() agar semua data ditampilkan tanpa pagination
+            ->select('incoming_letters.*', 'senders.name as pengirim');
+
+        // Jika ada inputan tanggal, tambahkan filter
+        if ($request->has(['start_date', 'end_date'])) {
+            $query->whereBetween('date_letter', [$request->start_date, $request->end_date]);
+        }
+
+        $suratmasuks = $query->get();
 
         return view('admin.surat-masuk.laporan', compact('suratmasuks'));
     }
+
 
 
     public function create()
