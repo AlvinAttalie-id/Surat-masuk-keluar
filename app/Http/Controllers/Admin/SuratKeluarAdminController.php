@@ -5,21 +5,41 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\SuratKeluar;
 use App\Http\Requests\SuratKeluar\{
-    StoreSuratKeluarRequest, UpdateSuratKeluarRequest
+    StoreSuratKeluarRequest,
+    UpdateSuratKeluarRequest
 };
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{
-    DB, File, Storage
+    DB,
+    File,
+    Storage
 };
 
 class SuratKeluarAdminController extends Controller
 {
     public function index()
     {
-        return view('admin.surat-keluar.index',[
+        return view('admin.surat-keluar.index', [
             'suratkeluars' => DB::table('outgoing_letters')
-                                    ->orderBy('id', 'DESC')
-                                    ->paginate(10)
+                ->orderBy('id', 'DESC')
+                ->paginate(10)
         ]);
+    }
+
+    public function laporan(Request $request)
+    {
+        $query = DB::table('outgoing_letters')
+            ->join('users', 'users.id', '=', 'outgoing_letters.user_id')
+            ->select('outgoing_letters.*', 'users.name as penerima');
+
+        // Jika ada inputan tanggal, tambahkan filter
+        if ($request->has(['start_date', 'end_date'])) {
+            $query->whereBetween('date_letter', [$request->start_date, $request->end_date]);
+        }
+
+        $suratkeluars = $query->get();
+
+        return view('admin.surat-keluar.laporan', compact('suratkeluars'));
     }
 
     public function create()
@@ -33,7 +53,7 @@ class SuratKeluarAdminController extends Controller
             $files = $request->file('file');
             $extension = $files->getClientOriginalExtension();
             $filename = base64_encode(time()) . '.' . $extension;
-            $files->move(public_path().'/suratkeluar', $filename);
+            $files->move(public_path() . '/suratkeluar', $filename);
             $files = $filename;
         } else {
             $filename = '';
@@ -55,9 +75,9 @@ class SuratKeluarAdminController extends Controller
     {
         return view('admin.surat-keluar.detail', [
             'suratkeluar' => DB::table('outgoing_letters')
-                                    ->where('id', $suratkeluar)
-                                    ->orderBy('id', 'DESC')
-                                    ->first()
+                ->where('id', $suratkeluar)
+                ->orderBy('id', 'DESC')
+                ->first()
         ]);
     }
 
@@ -65,8 +85,8 @@ class SuratKeluarAdminController extends Controller
     {
         return view('admin.surat-keluar.edit', [
             'suratkeluar' => DB::table('outgoing_letters')
-                                    ->where('id', $suratkeluar)
-                                    ->first()
+                ->where('id', $suratkeluar)
+                ->first()
         ]);
     }
 
@@ -75,12 +95,12 @@ class SuratKeluarAdminController extends Controller
         $surat = SuratKeluar::where('id', $suratkeluar)->first();
 
         if ($request->hasFile('file')) {
-            File::delete('suratkeluar/'. $surat->file);
+            File::delete('suratkeluar/' . $surat->file);
             Storage::disk('public')->delete("suratkeluar/" . $surat->file);
             $files = $request->file('file');
             $extension = $files->getClientOriginalExtension();
             $filename = base64_encode(time()) . '.' . $extension;
-            $files->move(public_path().'/suratkeluar', $filename);
+            $files->move(public_path() . '/suratkeluar', $filename);
             $files = $filename;
         } else {
             $filename = $surat->file;
@@ -101,7 +121,7 @@ class SuratKeluarAdminController extends Controller
     public function destroy(int $suratkeluar)
     {
         $surat = SuratKeluar::where('id', $suratkeluar)->first();
-        File::delete('suratkeluar/'. $surat->file);
+        File::delete('suratkeluar/' . $surat->file);
         Storage::disk('public')->delete("suratkeluar/" . $surat->file);
         $surat->delete();
 

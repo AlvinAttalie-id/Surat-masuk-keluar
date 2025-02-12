@@ -9,18 +9,43 @@ use App\Http\Requests\Pegawai\{
     StorePegawaiRequest,
     UpdatePegawaiRequest
 };
+use Illuminate\Http\Request;
 
 class PegawaiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.pegawai.index', [
-                        'pegawais' => DB::table('users')
-                                            ->where('role_id', 3)
-                                            ->orderBy('id', 'DESC')
-                                            ->paginate(10)
-                    ]);
+        // Ambil daftar posisi unik dari tabel users
+        $positions = DB::table('users')
+            ->where('role_id', 3)
+            ->distinct()
+            ->pluck('position');
+
+        // Query pegawai dengan filter posisi jika ada
+        $pegawais = DB::table('users')
+            ->where('role_id', 3)
+            ->when($request->position, function ($query) use ($request) {
+                return $query->where('position', $request->position);
+            })
+            ->orderBy('id', 'DESC')
+            ->paginate(10);
+
+        return view('admin.pegawai.index', compact('pegawais', 'positions'));
+    }
+
+    public function laporan(Request $request)
+    {
+        $query = DB::table('users')->where('role_id', 3);
+
+        // Filter berdasarkan position jika ada
+        if ($request->has('position') && $request->position != '') {
+            $query->where('position', $request->position);
         }
+
+        $pegawais = $query->get();
+
+        return view('admin.pegawai.laporan', compact('pegawais'));
+    }
 
     public function create()
     {
@@ -30,14 +55,14 @@ class PegawaiController extends Controller
     public function store(StorePegawaiRequest $request)
     {
         DB::table('users')->insert([
-           'name'       => $request->name,
-           'email'      => $request->email,
-           'password'   => bcrypt(12345),
-           'position'   => $request->position,
-           'phone'      => $request->phone,
-           'role_id'    => 3,
-           'created_at' => Carbon::now(),
-           'updated_at' => Carbon::now(),
+            'name'       => $request->name,
+            'email'      => $request->email,
+            'password'   => bcrypt(12345),
+            'position'   => $request->position,
+            'phone'      => $request->phone,
+            'role_id'    => 3,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
 
         return redirect()->route('pegawai.index')->with('message', 'Pegawai berhasil ditambahkan.');
@@ -46,8 +71,8 @@ class PegawaiController extends Controller
     public function edit(int $pegawai)
     {
         return view('admin.pegawai.edit', [
-                        'pegawai' => DB::table('users')->where(['id' => $pegawai, 'role_id' => 3])->first()
-                    ]);
+            'pegawai' => DB::table('users')->where(['id' => $pegawai, 'role_id' => 3])->first()
+        ]);
     }
 
     public function update(UpdatePegawaiRequest $request, int $pegawai)

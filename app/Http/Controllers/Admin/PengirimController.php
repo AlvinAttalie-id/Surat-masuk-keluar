@@ -8,12 +8,22 @@ use App\Http\Requests\Pengirim\{
     StorePengirimRequest,
     UpdatePengirimRequest
 };
+use Illuminate\Http\Request;
 
 class PengirimController extends Controller
 {
     public function index()
     {
         return view('admin.pengirim.index', ['pengirims' => DB::table('senders')->orderBy('id', 'DESC')->paginate(10)]);
+    }
+
+    public function laporan(Request $request)
+    {
+        $query = DB::table('senders');
+
+        $senders = $query->get();
+
+        return view('admin.pengirim.laporan', compact('senders'));
     }
 
     public function create()

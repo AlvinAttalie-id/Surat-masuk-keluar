@@ -40,7 +40,7 @@
                         </div>
 
                         <!-- Form Filter Tanggal -->
-                        <form method="GET" action="{{ route('surat-masuk.laporan') }}" id="filterForm"
+                        <form method="GET" target="_blank" action="{{ route('surat-masuk.laporan') }}" id="filterForm"
                             class="flex items-end gap-4">
                             <div class="flex flex-col w-full">
                                 <label for="start_date" class="text-sm font-medium text-gray-900">Dari Tanggal:</label>
