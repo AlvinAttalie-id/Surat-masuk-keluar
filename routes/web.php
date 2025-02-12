@@ -49,6 +49,12 @@ Route::middleware(['auth'])->group(function () {
             // Pastikan ini di atas resource
             Route::get('/surat-masuk/laporan', [SuratMasukAdminController::class, 'laporan'])
                 ->name('surat-masuk.laporan');
+            Route::get('/surat-keluar/laporan', [SuratKeluarAdminController::class, 'laporan'])
+                ->name('surat-keluar.laporan');
+            Route::get('/pengirim/laporan', [PengirimController::class, 'laporan'])
+                ->name('pengirim.laporan');
+            Route::get('/pegawai/laporan', [PegawaiController::class, 'laporan'])
+                ->name('pegawai.laporan');
 
             Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard.admin');
             Route::resource('/pegawai', PegawaiController::class, ['except' => 'show']);
