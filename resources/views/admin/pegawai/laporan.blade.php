@@ -1,58 +1,6 @@
-<!DOCTYPE html>
-<html lang="id">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laporan Pegawai</title>
-    <style type="text/css">
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        .rangkasurat {
-            width: 980px;
-            margin: 0 auto;
-            background-color: #fff;
-            border-bottom: 5px solid black;
-            padding: 20px;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th,
-        td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        h2,
-        h3 {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .signature-container {
-            margin-top: 20px;
-            padding: 10px;
-            position: relative;
-        }
-
-        .text-left {
-            text-align: left;
-        }
-    </style>
-</head>
-
-<body>
+@extends('layout.report')
+@section('title', 'Laporan Proyek')
+@section('content')
     <div class="container">
         <div class="rangkasurat">
             <table width="100%">
@@ -129,13 +77,11 @@
             <div style="clear: both;"></div>
         </div>
     </div>
-
-    {{-- Script untuk langsung mencetak laporan --}}
+@endsection
+@push('before-scripts')
     <script>
         window.onload = function() {
             window.print();
         };
     </script>
-</body>
-
-</html>
+@endpush
