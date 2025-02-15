@@ -46,7 +46,7 @@ Route::middleware(['auth'])->group(function () {
         ->prefix('admin')
         ->group(function () {
 
-            // Pastikan ini di atas resource
+            // Report Route
             Route::get('/surat-masuk/laporan', [SuratMasukAdminController::class, 'laporan'])
                 ->name('surat-masuk.laporan');
             Route::get('/surat-keluar/laporan', [SuratKeluarAdminController::class, 'laporan'])
@@ -68,6 +68,12 @@ Route::middleware(['auth'])->group(function () {
         ->prefix('pimpinan')
         ->as('pimpinan.')
         ->group(function () {
+
+            // Report Route
+            Route::get('/disposisi/laporan', [DisposisiPimpinanController::class, 'laporan'])
+                ->name('disposisi.laporan');
+
+
             Route::get('/dashboard', [DashboardPimpinanController::class, 'index'])->name('dashboard');
             Route::resource('/disposisi', DisposisiPimpinanController::class);
             Route::resource('/surat-masuk', SuratMasukPimpinanController::class)->only(['index', 'show']);

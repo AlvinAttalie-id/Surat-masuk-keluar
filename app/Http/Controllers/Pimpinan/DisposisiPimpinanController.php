@@ -12,26 +12,50 @@ class DisposisiPimpinanController extends Controller
     public function index()
     {
         $disposisis = DB::table('dispositions')
-                            ->join('users', 'users.id', '=', 'dispositions.user_id')
-                            ->join('incoming_letters', 'incoming_letters.id', '=', 'dispositions.incoming_letter_id')
-                            ->select('dispositions.*', 'users.name as pegawai', 'users.position', 'incoming_letters.no_letter as no_surat', 'incoming_letters.regarding as perihal')
-                            ->paginate(10);
+            ->join('users', 'users.id', '=', 'dispositions.user_id')
+            ->join('incoming_letters', 'incoming_letters.id', '=', 'dispositions.incoming_letter_id')
+            ->select('dispositions.*', 'users.name as pegawai', 'users.position', 'incoming_letters.no_letter as no_surat', 'incoming_letters.regarding as perihal')
+            ->paginate(10);
 
         return view('pimpinan.disposisi.index', compact('disposisis'));
     }
 
+    public function laporan(Request $request)
+    {
+        $query = DB::table('dispositions')
+            ->join('users', 'users.id', '=', 'dispositions.user_id')
+            ->join('incoming_letters', 'incoming_letters.id', '=', 'dispositions.incoming_letter_id')
+            ->select(
+                'dispositions.*',
+                'users.name as pegawai',
+                'users.position',
+                'incoming_letters.no_letter as no_surat',
+                'incoming_letters.regarding as perihal'
+            );
+
+        // Jika ada filter tanggal, gunakan kolom "deadline"
+        if ($request->has(['start_date', 'end_date'])) {
+            $query->whereBetween('dispositions.deadline', [$request->start_date, $request->end_date]);
+        }
+
+        $disposisis = $query->get();
+
+        return view('pimpinan.disposisi.laporan', compact('disposisis'));
+    }
+
+
     public function create()
     {
-        return view('pimpinan.disposisi.create',[
+        return view('pimpinan.disposisi.create', [
             'pegawais'    => DB::table('users')
-                                    ->where('role_id', 3)
-                                    ->select('id', 'name', 'position')
-                                    ->orderBy('name')
-                                    ->get(),
+                ->where('role_id', 3)
+                ->select('id', 'name', 'position')
+                ->orderBy('name')
+                ->get(),
             'suratmasuks' => DB::table('incoming_letters')
-                                    ->select('id', 'no_letter', 'regarding')
-                                    ->orderBy('id', 'DESC')
-                                    ->get()
+                ->select('id', 'no_letter', 'regarding')
+                ->orderBy('id', 'DESC')
+                ->get()
         ]);
     }
 
@@ -54,11 +78,11 @@ class DisposisiPimpinanController extends Controller
     public function show(int $disposisi)
     {
         $disposisi = DB::table('dispositions')
-                        ->select('dispositions.*', 'users.name as pegawai', 'users.position', 'incoming_letters.no_letter as no_surat', 'incoming_letters.regarding as perihal')
-                        ->join('users', 'users.id', '=', 'dispositions.user_id')
-                        ->join('incoming_letters', 'incoming_letters.id', '=', 'dispositions.incoming_letter_id')
-                        ->where('dispositions.id', $disposisi)
-                        ->first();
+            ->select('dispositions.*', 'users.name as pegawai', 'users.position', 'incoming_letters.no_letter as no_surat', 'incoming_letters.regarding as perihal')
+            ->join('users', 'users.id', '=', 'dispositions.user_id')
+            ->join('incoming_letters', 'incoming_letters.id', '=', 'dispositions.incoming_letter_id')
+            ->where('dispositions.id', $disposisi)
+            ->first();
 
         return view('pimpinan.disposisi.detail', compact('disposisi'));
     }
@@ -66,24 +90,24 @@ class DisposisiPimpinanController extends Controller
     public function edit(int $disposisi)
     {
         $pegawais     = DB::table('users')
-                            ->where('role_id', 3)
-                            ->select('id', 'name', 'position')
-                            ->orderBy('name')
-                            ->get();
+            ->where('role_id', 3)
+            ->select('id', 'name', 'position')
+            ->orderBy('name')
+            ->get();
 
         $suratmasuks = DB::table('incoming_letters')
-                            ->select('id', 'no_letter', 'regarding')
-                            ->orderBy('id', 'DESC')
-                            ->get();
+            ->select('id', 'no_letter', 'regarding')
+            ->orderBy('id', 'DESC')
+            ->get();
 
         $disposisi   = DB::table('dispositions')
-                            ->select('dispositions.*', 'users.name as pegawai', 'users.position', 'incoming_letters.no_letter as no_surat', 'incoming_letters.regarding as perihal')
-                            ->join('users', 'users.id', '=', 'dispositions.user_id')
-                            ->join('incoming_letters', 'incoming_letters.id', '=', 'dispositions.incoming_letter_id')
-                            ->where('dispositions.id', $disposisi)
-                            ->first();
+            ->select('dispositions.*', 'users.name as pegawai', 'users.position', 'incoming_letters.no_letter as no_surat', 'incoming_letters.regarding as perihal')
+            ->join('users', 'users.id', '=', 'dispositions.user_id')
+            ->join('incoming_letters', 'incoming_letters.id', '=', 'dispositions.incoming_letter_id')
+            ->where('dispositions.id', $disposisi)
+            ->first();
 
-        return view('pimpinan.disposisi.edit', compact('pegawais','suratmasuks','disposisi'));
+        return view('pimpinan.disposisi.edit', compact('pegawais', 'suratmasuks', 'disposisi'));
     }
 
     public function update(Request $request, int $disposisi)
@@ -97,7 +121,7 @@ class DisposisiPimpinanController extends Controller
                 'deadline'           => $request->deadline,
                 'content'            => $request->content,
                 'updated_at'         => Carbon::now(),
-        ]);
+            ]);
 
         return redirect()->route('pimpinan.disposisi.index')->with('message', 'Disposisi berhasil diedit.');
     }
