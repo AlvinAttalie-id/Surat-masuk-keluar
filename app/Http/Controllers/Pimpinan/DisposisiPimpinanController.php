@@ -61,15 +61,33 @@ class DisposisiPimpinanController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'tujuan' => 'required|exists:users,id', // Pastikan "tujuan" ada di tabel users
+            'suratmasuk' => 'required|exists:incoming_letters,id',
+            'purpose' => 'required|string',
+            'deadline' => 'required|date',
+            'content' => 'required|string',
+        ], [
+            //error Message
+            'tujuan.required' => 'Pegawai tujuan harus dipilih.',
+            'suratmasuk.required' => 'Surat Masuk harus dipilih.',
+            'purpose.required' => 'Perihal harus dipilih.',
+            'deadline.required' => 'Batas Waktu harus Diisi.',
+            'content.required' => 'Isi harus Diisi.',
+
+
+            'tujuan.exists' => 'Pegawai yang dipilih tidak valid.',
+        ]);
+
         DB::table('dispositions')->insert([
-            'user_id'            => $request->tujuan,
+            'user_id' => $request->tujuan,
             'incoming_letter_id' => $request->suratmasuk,
-            'purpose'            => $request->purpose,
-            'deadline'           => $request->deadline,
-            'status'             => 1,
-            'content'            => $request->content,
-            'created_at'         => Carbon::now(),
-            'updated_at'         => Carbon::now(),
+            'purpose' => $request->purpose,
+            'deadline' => $request->deadline,
+            'status' => 1,
+            'content' => $request->content,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
         return redirect()->route('pimpinan.disposisi.index')->with('message', 'Disposisi berhasil ditambahkan.');

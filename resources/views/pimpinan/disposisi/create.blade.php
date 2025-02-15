@@ -17,14 +17,14 @@
                     <form action="{{ route('pimpinan.disposisi.store') }}" method="POST">
                         @csrf
                         <div class="px-6 pb-8 border-b border-gray-900/10">
-                            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                            <div class="grid grid-cols-1 mt-10 gap-x-6 gap-y-8 sm:grid-cols-6">
                                 <div class="sm:col-span-3">
                                     <label for="tujuan"
                                         class="block text-sm font-medium leading-6 text-gray-900">Didisposisikan
                                         Kepada</label>
                                     <div class="mt-2">
                                         <select id="tujuan" name="tujuan" autocomplete="tujuan"
-                                            class="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                                            class="block w-full p-2 text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                                             @error('tujuan') is-invalid @enderror">
                                             <option disabled selected>-- Pilih Pegawai --</option>
                                             @foreach ($pegawais as $pegawai)
@@ -42,7 +42,7 @@
                                         Masuk</label>
                                     <div class="mt-2">
                                         <select id="suratmasuk" name="suratmasuk" autocomplete="suratmasuk"
-                                            class="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                                            class="block w-full p-2 text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                                             @error('suratmasuk') is-invalid @enderror">
                                             <option disabled selected>-- Pilih Surat Masuk --</option>
                                             @foreach ($suratmasuks as $suratmasuk)
@@ -61,8 +61,8 @@
                                     </label>
                                     <div class="mt-2">
                                         <input type="text" name="purpose" id="purpose" autocomplete="purpose"
-                                            class="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            @error('purpose') is-invalid @enderror value="{{ old('purpose') }}">
+                                            class="block w-full p-2 text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            @error('purpose') is-invalid @enderror value="{{ old('purpose') }}" required>
                                         @error('purpose')
                                             <div class="mt-1 text-sm font-semibold text-red-600">{{ $message }}</div>
                                         @enderror
@@ -72,8 +72,9 @@
                                     <label for="deadline" class="block text-sm font-medium leading-6 text-gray-900">Batas
                                         Waktu</label>
                                     <div class="mt-2">
-                                        <input type="date" name="deadline" id="deadline" autocomplete="deadline"
-                                            class="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        <input required type="date" name="deadline" id="deadline"
+                                            autocomplete="deadline"
+                                            class="block w-full p-2 text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                             @error('deadline') is-invalid @enderror value="{{ old('deadline') }}">
                                         @error('deadline')
                                             <div class="mt-1 text-sm font-semibold text-red-600">{{ $message }}</div>
@@ -84,7 +85,7 @@
                             <div class="col-span-12 mt-3">
                                 <label for="content" class="block text-sm font-medium leading-6 text-gray-900">Isi</label>
                                 <div class="mt-2">
-                                    <textarea id="content" name="content" rows="3"
+                                    <textarea required id="content" name="content" rows="3"
                                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         @error('content') is-invalid @enderror>{!! old('content') !!}</textarea>
                                 </div>
@@ -92,15 +93,15 @@
                                     <div class="mt-1 text-sm font-semibold text-red-600">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="mt-8 mb-1 flex items-center lg:justify-between justify-start gap-x-6">
+                            <div class="flex items-center justify-start mt-8 mb-1 lg:justify-between gap-x-6">
                                 <a href="{{ route('pimpinan.disposisi.index') }}"
                                     class="border border-green-600 rounded-lg hover:bg-green-600 font-medium text-green-600 hover:text-white dark:text-green-500 hover:no-underline py-1.5 px-2 inline-flex items-center lg:order-1 order-2">
-                                    <ion-icon name="arrow-back-circle-outline" class="text-lg px-1"></ion-icon>
+                                    <ion-icon name="arrow-back-circle-outline" class="px-1 text-lg"></ion-icon>
                                     <span class="text-base">Kembali</span>
                                 </a>
                                 <button type="submit"
                                     class="border border-indigo-600 rounded-lg hover:bg-indigo-600 font-medium text-indigo-600 hover:text-white dark:text-indigo-500 hover:no-underline py-1.5 px-2 inline-flex items-center lg:order-2 order-1">
-                                    <ion-icon name="save-outline" class="text-lg px-1"></ion-icon>
+                                    <ion-icon name="save-outline" class="px-1 text-lg"></ion-icon>
                                     <span class="text-base">Simpan</span>
                                 </button>
                             </div>
