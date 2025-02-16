@@ -35,27 +35,31 @@
                             class="lg:w-[4%] w-[10%]  inline-block py-1 my-2 font-bold text-center uppercase align-middle transition-all bg-transparent border rounded-lg cursor-pointer border-indigo-800 hover:bg-indigo-800 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-indigo-800 hover:text-white">
                             <ion-icon name="add" class="w-6 h-6"></ion-icon>
                         </a>
-                        <!-- Form Filter Tanggal -->
-                        <form method="GET" target="_blank" action="{{ route('pimpinan.disposisi.laporan') }}"
-                            id="filterForm" class="flex items-end gap-4">
-                            <div class="flex flex-col w-full">
-                                <label for="start_date" class="text-sm font-medium text-gray-900">Dari Tanggal:</label>
-                                <input type="date" id="start_date" name="start_date" value="{{ request('start_date') }}"
-                                    class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-600 focus:outline-none">
-                            </div>
+                        <div class="flex flex-col pb-4 mb-0 bg-white rounded-t-2xl">
+                            <!-- Form Filter Tanggal -->
+                            <form method="GET" target="_blank" action="{{ route('pimpinan.disposisi.laporan') }}"
+                                id="filterForm" class="flex items-end gap-4">
+                                <div class="flex flex-col w-full">
+                                    <label for="start_date" class="text-sm font-medium text-gray-900">Dari Tanggal:</label>
+                                    <input required type="date" id="start_date" name="start_date"
+                                        value="{{ request('start_date') }}"
+                                        class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-600 focus:outline-none">
+                                </div>
 
-                            <div class="flex flex-col w-full">
-                                <label for="end_date" class="text-sm font-medium text-gray-900">Sampai Tanggal:</label>
-                                <input type="date" id="end_date" name="end_date" value="{{ request('end_date') }}"
-                                    class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-600 focus:outline-none">
-                            </div>
+                                <div class="flex flex-col w-full">
+                                    <label for="end_date" class="text-sm font-medium text-gray-900">Sampai Tanggal:</label>
+                                    <input required type="date" id="end_date" name="end_date"
+                                        value="{{ request('end_date') }}"
+                                        class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-600 focus:outline-none">
+                                </div>
 
-                            <!-- Tombol Filter -->
-                            <button type="submit"
-                                class="px-4 py-2 font-bold text-white bg-indigo-800 rounded-lg shadow-md hover:bg-indigo-900 focus:outline-none">
-                                <ion-icon name="search" class="w-6 h-6"></ion-icon>
-                            </button>
-                        </form>
+                                <!-- Tombol Filter -->
+                                <button type="submit"
+                                    class="px-4 py-2 font-bold text-white bg-indigo-800 rounded-lg shadow-md hover:bg-indigo-900 focus:outline-none">
+                                    <ion-icon name="search" class="w-6 h-6"></ion-icon>
+                                </button>
+                            </form>
+                        </div>
                     </div>
 
                     <div class="flex-auto pb-2">

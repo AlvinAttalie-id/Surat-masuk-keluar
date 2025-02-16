@@ -6,7 +6,7 @@
         <table width="100%">
             <tr>
                 <td><img src="{{ asset('assets/img/logo-anjas.jpg') }}" width="50px"></td>
-                <td class="tengah">
+                <td class="text-center">
                     <h2>KANTOR BALAI INSEMINASI BUATAN PROVINSI KALIMANTAN SELATAN</h2>
                     <b>Balai Inseminasi Buatan (BIB) Provinsi Kalimantan Selatan yang beralamat Jl. A. Yani Km.33 No.32,
                         Loktabat Selatan, Kota Banjarbaru, Kalimantan Selatan 70712</b>

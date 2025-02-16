@@ -44,13 +44,15 @@
                             class="flex items-end gap-4">
                             <div class="flex flex-col w-full">
                                 <label for="start_date" class="text-sm font-medium text-gray-900">Dari Tanggal:</label>
-                                <input type="date" id="start_date" name="start_date" value="{{ request('start_date') }}"
+                                <input required type="date" id="start_date" name="start_date"
+                                    value="{{ request('start_date') }}"
                                     class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-600 focus:outline-none">
                             </div>
 
                             <div class="flex flex-col w-full">
                                 <label for="end_date" class="text-sm font-medium text-gray-900">Sampai Tanggal:</label>
-                                <input type="date" id="end_date" name="end_date" value="{{ request('end_date') }}"
+                                <input required type="date" id="end_date" name="end_date"
+                                    value="{{ request('end_date') }}"
                                     class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-600 focus:outline-none">
                             </div>
 

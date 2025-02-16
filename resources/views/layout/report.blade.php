@@ -8,6 +8,7 @@
     <!-- Include CSS Files -->
     @stack('before-styles')
     <link href="{{ asset('assets/css/report-header.css') }}" rel="stylesheet">
+
 </head>
 
 <body>
