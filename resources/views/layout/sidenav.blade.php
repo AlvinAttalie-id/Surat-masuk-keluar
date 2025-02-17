@@ -5,7 +5,7 @@
         <i class="absolute top-0 right-0 hidden p-4 opacity-50 cursor-pointer fas fa-times text-slate-400 xl:hidden"
             sidenav-close></i>
         <a class="block px-8 py-6 m-0 text-lg leading-tight text-center whitespace-nowrap text-slate-700" href="#">
-            <span class="ml-1 font-semibold transition-all duration-200 ease-nav-brand">SIARAT</span>
+            <span class="ml-1 font-semibold transition-all duration-200 ease-nav-brand">ARSIP</span>
             <p class="text-sm">Sistem Arsip Surat</p>
         </a>
     </div>

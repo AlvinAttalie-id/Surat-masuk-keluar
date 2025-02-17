@@ -4,13 +4,13 @@
 
 @section('content')
     <div>
-        <div class="flex min-h-full flex-col justify-center px-6 py-10 lg:px-8">
-            <div class="sm:mx-auto sm:w-full sm:max-w-sm text-center">
-                <h2 class="mt-10 text-2xl font-bold leading-9 tracking-wide text-gray-900">SIARAT</h2>
+        <div class="flex flex-col justify-center min-h-full px-6 py-10 lg:px-8">
+            <div class="text-center sm:mx-auto sm:w-full sm:max-w-sm">
+                <h2 class="mt-10 text-2xl font-bold leading-9 tracking-wide text-gray-900">ARSIP</h2>
                 <p class="text-base opacity-70">Sistem Arsip Surat</p>
             </div>
 
-            <div class="mt-6 sm:mx-auto sm:w-full sm:max-w-sm bg-white shadow-2xl p-10 rounded-xl">
+            <div class="p-10 mt-6 bg-white shadow-2xl sm:mx-auto sm:w-full sm:max-w-sm rounded-xl">
                 @if (session()->has('loginError'))
                     <div id="alert-2"
                         class="flex items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
@@ -21,7 +21,7 @@
                                 d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
                         </svg>
                         <span class="sr-only">Info</span>
-                        <div class="ms-3 text-sm font-medium">
+                        <div class="text-sm font-medium ms-3">
                             {{ session('loginError') }}
                         </div>
                         <button type="button"
@@ -36,7 +36,7 @@
                         </button>
                     </div>
                 @endif
-                <form class="space-y-6 mb-2" action="{{ route('authenticate') }}" method="POST">
+                <form class="mb-2 space-y-6" action="{{ route('authenticate') }}" method="POST">
                     @csrf
                     <div>
                         <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
@@ -47,7 +47,7 @@
                         </div>
                         @error('email')
                             <span class="invalid-feedback">
-                                <strong class="text-red-600 text-sm">{{ $message }}</strong>
+                                <strong class="text-sm text-red-600">{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
@@ -62,7 +62,7 @@
                         </div>
                         @error('password')
                             <span class="invalid-feedback">
-                                <strong class="text-red-600 text-sm">{{ $message }}</strong>
+                                <strong class="text-sm text-red-600">{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>

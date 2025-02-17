@@ -51,12 +51,12 @@
                                 <script>
                                     document.write(new Date().getFullYear());
                                 </script>
-                                Siarat All Rights Reserved.
+                                Surat-Arsip All Rights Reserved.
                             </div>
                         </div>
                         <div class="w-full max-w-full px-3 mt-0 shrink-0 lg:w-1/2 lg:flex-none">
                             <ul class="flex flex-wrap justify-end pl-0 mb-0 list-none lg:justify-end">
-                                <p class="text-sm">Created By Dahlan.</p>
+                                <p class="text-sm">Created By Alvin Attalie.</p>
                             </ul>
                         </div>
                     </div>

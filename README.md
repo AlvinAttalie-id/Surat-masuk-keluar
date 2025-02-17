@@ -3,16 +3,16 @@
 ## Demo Akun Project :
 
 <h4>Administrator</h4>
-<p>Email : anisa@gmail.com</p>
-<p>Password : anisa123</p>
+<p>Email : admin@gmail.com</p>
+<p>Password : admin123</p>
 
 <h4>Pimpinan</h4>
-<p>Email : bambang@gmail.com</p>
-<p>Password : bambang123</p>
+<p>Email : pimpinan@gmail.com</p>
+<p>Password : pimpinan123</p>
 
 <h4>Pegawai</h4>
-<p>Email : tito@gmail.com</p>
-<p>Password : tito123</p>
+<p>Email : staff1@gmail.com</p>
+<p>Password : staff1234</p>
 
 ## Cara Install
 

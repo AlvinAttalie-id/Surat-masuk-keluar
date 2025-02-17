@@ -12,7 +12,7 @@ class UserSeeder extends Seeder
     {
         $users = [
             [
-                'name'      => 'Alvin Attalie',
+                'name'      => 'Admin',
                 'email'     => 'admin@gmail.com',
                 'password'  => bcrypt('admin1234'),
                 'position'  => 'administrasi',
@@ -22,9 +22,9 @@ class UserSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name'      => 'Eddy Saputra',
-                'email'     => 'eddy@gmail.com',
-                'password'  => bcrypt('eddy123'),
+                'name'      => 'Pimpinan',
+                'email'     => 'pimpinan@gmail.com',
+                'password'  => bcrypt('pimpinan123'),
                 'position'  => 'pimpinan',
                 'phone'     => '087766591513',
                 'role_id'   => 2,
@@ -32,9 +32,9 @@ class UserSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name'      => 'Rizqi Ramdahani',
-                'email'     => 'rizqi@gmail.com',
-                'password'  => bcrypt('rizqi123'),
+                'name'      => 'Staff IT',
+                'email'     => 'staff1@gmail.com',
+                'password'  => bcrypt('staff1234'),
                 'position'  => 'Staff IT',
                 'phone'     => '089655591513',
                 'role_id'   => 3,
@@ -42,9 +42,9 @@ class UserSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name'      => 'Reza',
-                'email'     => 'Reza@gmail.com',
-                'password'  => bcrypt('Reza123'),
+                'name'      => 'Marketing',
+                'email'     => 'Marketing@gmail.com',
+                'password'  => bcrypt('marketing123'),
                 'position'  => 'Marketing',
                 'phone'     => '085655591713',
                 'role_id'   => 3,

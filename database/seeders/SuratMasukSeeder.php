@@ -18,7 +18,7 @@ class SuratMasukSeeder extends Seeder
             [
                 'user_id'       => 1,
                 'sender_id'     => 1,
-                'no_letter'     => 'ABC/12345-00-00-123/XXX',
+                'no_letter'     => 'XXI/12345-00-00-123/XXX',
                 'regarding'     => 'Undangan',
                 'date_letter'   => '2024-05-21',
                 'date_received' => Carbon::now(),
@@ -27,7 +27,7 @@ class SuratMasukSeeder extends Seeder
             [
                 'user_id'       => 1,
                 'sender_id'     => 2,
-                'no_letter'     => 'ABC/54321-00-00-123/ZZZ',
+                'no_letter'     => 'XXI/54321-00-00-123/ZZZ',
                 'regarding'     => 'Rapat',
                 'date_letter'   => '2024-05-23',
                 'date_received' => Carbon::now(),

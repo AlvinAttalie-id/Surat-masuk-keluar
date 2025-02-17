@@ -18,11 +18,11 @@ class DispositionSeeder extends Seeder
             [
                 'user_id'            => 3,
                 'incoming_letter_id' => 1,
-                'purpose'            => 'Rapat bulanan hasil project xxx',
+                'purpose'            => 'Tinjauan Masyarakat xxx',
                 'content'            => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit facilis molestias quod maxime officiis saepe nobis corporis a placeat accusantium qui debitis vero necessitatibus tempore laudantium tenetur, ad incidunt praesentium?
                 Itaque earum deserunt, placeat a mollitia omnis ipsam, soluta rerum animi facilis esse? Consequuntur itaque dicta et nam voluptatum exercitationem ad? Praesentium obcaecati aliquam molestiae, quasi ex quo ab quas!',
                 'status'             => 1,
-                'deadline'           => '2024-05-31',
+                'deadline'           => '2025-02-01',
                 'created_at'         => Carbon::now(),
                 'updated_at'         => Carbon::now()
             ],
@@ -33,7 +33,7 @@ class DispositionSeeder extends Seeder
                 'content'            => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit facilis molestias quod maxime officiis saepe nobis corporis a placeat accusantium qui debitis vero necessitatibus tempore laudantium tenetur, ad incidunt praesentium?
                 Itaque earum deserunt, placeat a mollitia omnis ipsam, soluta rerum animi facilis esse? Consequuntur itaque dicta et nam voluptatum exercitationem ad? Praesentium obcaecati aliquam molestiae, quasi ex quo ab quas!',
                 'status'             => 1,
-                'deadline'           => '2024-06-01',
+                'deadline'           => '2025-01-01',
                 'created_at'         => Carbon::now(),
                 'updated_at'         => Carbon::now()
             ]

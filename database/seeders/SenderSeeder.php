@@ -15,22 +15,22 @@ class SenderSeeder extends Seeder
     {
         $senders = [
             [
-                'name'      => 'Ani',
-                'email'     => 'ani@gmail.com',
-                'address'   => 'Jl.XXX NO.01. Cirebon, Jawa Barat',
-                'phone'     => '0856651234276',
+                'name'      => 'Daddy',
+                'email'     => 'daddy@gmail.com',
+                'address'   => 'Jl.XXX NO.01. Banjarbaru, Kalimantan Selatan',
+                'phone'     => '089671881933',
             ],
             [
-                'name'      => 'Budi',
-                'email'     => 'budi@gmail.com',
-                'address'   => 'Jl.XXX NO.01. Jakarta Timur, DKI Jakarta',
-                'phone'     => '087766591519',
+                'name'      => 'Mommy',
+                'email'     => 'mommy@gmail.com',
+                'address'   => 'Jl.XXX NO.01. Banjarmasin, Kalimantan Selatan',
+                'phone'     => '080192881233',
             ],
             [
-                'name'      => 'Tono',
-                'email'     => 'tono@gmail.com',
-                'address'   => 'Jl.XXX NO.03. Jakarta Barat, DKI Jakarta',
-                'phone'     => '087766591123',
+                'name'      => 'Arthur',
+                'email'     => 'arthur@gmail.com',
+                'address'   => 'Jl.XXX NO.03. Tanah Laut, Kalimantan Selatan',
+                'phone'     => '089182231821',
             ],
         ];
 

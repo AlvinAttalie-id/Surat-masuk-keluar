@@ -16,18 +16,18 @@ class SuratKeluarSeeder extends Seeder
         $SuratKeluar = [
             [
                 'user_id'       => 1,
-                'no_letter'     => 'ABC/12345-00-00-123/XXX',
+                'no_letter'     => 'XXI/12345-00-00-123/XXX',
                 'regarding'     => 'Project xxx',
-                'purpose'       => 'Rapat vendor project xxx',
-                'date_letter'   => '2024-05-21',
+                'purpose'       => 'Rapat Kerja xxx',
+                'date_letter'   => '2025-01-21',
                 'file'          => 'filexxx'
             ],
             [
                 'user_id'       => 1,
-                'no_letter'     => 'ABC/12345-00-00-123/XYZ',
+                'no_letter'     => 'XXI/12345-00-00-123/XYZ',
                 'regarding'     => 'Dinas',
-                'purpose'       => 'Tinjauan dinas ke kota xxx',
-                'date_letter'   => '2024-05-22',
+                'purpose'       => 'Tinjauan Kegiatan xxx',
+                'date_letter'   => '2025-01-22',
                 'file'          => 'filexyz'
             ]
         ];
