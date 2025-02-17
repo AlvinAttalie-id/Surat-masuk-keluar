@@ -20,6 +20,7 @@
     <link href="{{ asset('assets/css/soft-ui-dashboard-tailwind.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/css/soft-ui-dashboard-tailwind.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/css/perfect-scrollbar.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/collapse.css') }}" rel="stylesheet" />
     {{-- Ion Icon --}}
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
@@ -75,6 +76,7 @@
 <!-- main script file  -->
 <script src="{{ asset('assets/js/soft-ui-dashboard-tailwind.js') }}" async></script>
 <script src="{{ asset('assets/js/soft-ui-dashboard-tailwind.min.js') }}" async></script>
+<script src="{{ asset('assets/js/collapse.js') }}" async></script>
 @yield('script')
 
 </html>

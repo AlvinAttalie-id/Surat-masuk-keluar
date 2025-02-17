@@ -1,14 +1,4 @@
-<h1 align="center">Jabar Digital Academy - Fullstack Web Programming</h1>
-
-## Author
-
-<p>Irfan Wahyudi</p>
-
-## Deskripsi Project :
-
-<p>Siarat | Sistem Arsip Surat 📩 | Framework Laravel Versi 11</p>
-
-Project Tugas Akhir : Siarat atau sistem arsip surat sederhana dibuat untuk manajemen arsip surat masuk dan surat keluar pada perusahaan atau instansi.
+<h1 align="center">Sistem Arsip Surat | Framework Laravel </h1>
 
 ## Demo Akun Project :
 
@@ -29,8 +19,8 @@ Project Tugas Akhir : Siarat atau sistem arsip surat sederhana dibuat untuk mana
 1. **Clone Repository**
 
 ```bash
-git clone https://github.com/irfanw98/188-Irfan-Wahyudi.git
-cd 188-Irfan-Wahyudi
+git clone https://github.com/AlvinAttalie-id/Surat-masuk-keluar.git
+cd Surat-masuk-keluar
 composer install
 cp .env.example .env
 ```

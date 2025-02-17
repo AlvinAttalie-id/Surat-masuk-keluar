@@ -1,0 +1,11 @@
+.transition-transform {
+    transition: transform 0.3s ease-in-out;
+}
+.rotate-180 {
+    transform: rotate(180deg);
+}
+.active {
+    background-color: #ebf4ff; /* Biru muda pudar */
+    color: #1e40af; /* Warna biru gelap */
+    border-radius: 5px;
+}
